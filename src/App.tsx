@@ -1,15 +1,28 @@
 
 
+
 import './App.css'
+import OpendFileBar from './components/OpendFileBar'
 import RecursiveComponents from './components/RecursiveComponents'
 import { FileTree } from './data/FileTree'
 
+
+
 function App() {
+
+ 
   return (
-    <div className='my-4'>
-    <RecursiveComponents FileTree={FileTree} />
-    
+    <>
+    <div className='m-4 flex h-screen'>
+    <div className='w-72 border-r-2 border-white'>
+      <RecursiveComponents FileTree={FileTree} />
+      </div>
+
+    <OpendFileBar />
+      
     </div>
+    </>
+    
   )
 }
 
