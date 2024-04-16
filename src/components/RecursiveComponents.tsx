@@ -5,7 +5,7 @@ import { ChevronRight } from 'lucide-react';
 import { ChevronDown } from 'lucide-react';
 import RenderFileIcones from "./RenderFileIcones";
 import { useDispatch, useSelector } from "react-redux";
-import { setOpenFiles } from "../app/features/FileTreeSlice";
+import { setClickedFile, setOpenFiles } from "../app/features/FileTreeSlice";
 import { RootState } from "../app/store";
 import { doseFileObjectExist } from "../utils/functions";
 
@@ -16,7 +16,7 @@ FileTree:IFile
 const RecursiveComponents = 
 ({FileTree}:IProps) => {
  
-  const {id,name,isFolder,children} = FileTree;
+  const {id,name,isFolder,children,content} = FileTree;
   const dispatch = useDispatch();
  const {opendFile} = useSelector((state:RootState) => state.tree);
   const [isOpen,setIsOpen] = useState<boolean>(false);
@@ -26,10 +26,10 @@ const RecursiveComponents =
 
   const onFileClicked = ()=>{
 
-    const exist = doseFileObjectExist(opendFile,id)
+    const exist = doseFileObjectExist(opendFile,id)    
+     dispatch(setClickedFile({filename:name,filecontent:content,activeTabId:id}))
     if(exist) return;
-     dispatch(setOpenFiles([...opendFile,FileTree]))  
-    
+     dispatch(setOpenFiles([...opendFile,FileTree]))   
   }
   
   return (
