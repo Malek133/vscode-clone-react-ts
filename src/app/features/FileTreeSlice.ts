@@ -3,7 +3,7 @@ import { IFile } from "../../interface";
 
 interface IClickedFile {
     filename:string,
-        filecontent:string | undefined,
+        filecontent:string,
         activeTabId:string|null;
 }
 

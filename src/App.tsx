@@ -1,25 +1,27 @@
 
-
-
+import { useSelector } from 'react-redux'
 import './App.css'
-import OpendFileBar from './components/OpendFileBar'
+ import OpendFileBar from './components/OpendFileBar'
 import RecursiveComponents from './components/RecursiveComponents'
+import ResizeblPanel from './components/ResizblPanel'
 import { FileTree } from './data/FileTree'
-
+import { RootState } from './app/store'
+import WelcomeIcone from './components/WelcomeIcone'
 
 
 function App() {
 
- 
+  const {opendFile} = useSelector(({tree}:RootState) => tree);
   return (
     <>
     <div className='m-4 flex h-screen'>
-    <div className='w-72 border-r-2 border-slate-700'>
+    
+      <ResizeblPanel showPanel={true} 
+      LeftPanel={<div className='w-60'>
       <RecursiveComponents FileTree={FileTree} />
-      </div>
-
-      <OpendFileBar />
-       
+      </div>} RightPanel={opendFile.length ? (<OpendFileBar />) 
+      :(<WelcomeIcone />)}/>
+      
     </div>
     </>
     

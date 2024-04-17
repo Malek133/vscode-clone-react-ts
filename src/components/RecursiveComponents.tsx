@@ -19,7 +19,7 @@ const RecursiveComponents =
   const {id,name,isFolder,children,content} = FileTree;
   const dispatch = useDispatch();
  const {opendFile} = useSelector((state:RootState) => state.tree);
-  const [isOpen,setIsOpen] = useState<boolean>(false);
+  const [isOpen,setIsOpen] = useState<boolean>(true);
   const toggel = () =>{
      setIsOpen(prev =>!prev)
   }
