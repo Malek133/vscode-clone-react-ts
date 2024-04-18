@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import {setClickedFile, setOpenFiles } from "../app/features/FileTreeSlice";
 import { RootState } from "../app/store";
 
+
 interface IProps{
 file:IFile
 }
 
 const OpendFileItem = ({file}:IProps) => {
-const dispatch = useDispatch()
+const dispatch = useDispatch();
+
   const onClick = () =>{
     const {id,name,content} = file
     dispatch(setClickedFile({filename:name,filecontent:content,activeTabId:id}))
@@ -35,7 +37,8 @@ const dispatch = useDispatch()
     filecontent:content,filename:name}));
   }
   return (
-    <div onClick={onClick} style={{
+    <div onClick={onClick} 
+    style={{
         borderTop: file.id === activeTabId ? "2px solid #ae91ff" : "",
       }}
     className="flex justify-around px-1

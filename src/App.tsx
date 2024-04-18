@@ -9,6 +9,7 @@ import { RootState } from './app/store'
 import WelcomeIcone from './components/WelcomeIcone'
 
 
+
 function App() {
 
   const {opendFile} = useSelector(({tree}:RootState) => tree);
@@ -19,6 +20,7 @@ function App() {
       <ResizeblPanel showPanel={true} 
       LeftPanel={<div className='w-60'>
       <RecursiveComponents FileTree={FileTree} />
+      
       </div>} RightPanel={opendFile.length ? (<OpendFileBar />) 
       :(<WelcomeIcone />)}/>
       
